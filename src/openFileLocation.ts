@@ -4,6 +4,12 @@ const OPEN_COMMAND_MAP: Record<string, string | undefined> = {
   linux: "xdg-open",
 };
 
+/**
+ * Opens a file explorer for the detected OS. Supports Windows, Darwain (Mac),
+ * and Linux.
+ * @param path The directory to open
+ * @returns The Deno command output
+ */
 export function openFileLocation(path: string): Promise<Deno.CommandOutput> {
   const osCommand = OPEN_COMMAND_MAP[Deno.build.os];
   if (!osCommand) {
